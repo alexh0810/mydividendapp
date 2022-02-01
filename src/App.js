@@ -14,8 +14,17 @@ function App() {
     }
     useEffect(() => fetchData(), []);
     console.log(data);
-
+     // Calculating 2021's dividend yield 
     const dividend2021 = data.map(el => el.dividendHistory[0].dividend);
+    const price = data.map(el => el.price);
+    const yieldArr = []; 
+    for (let i = 0; i < dividend2021.length; i++) {
+      let y = (dividend2021[i] / price[i] * 100).toFixed(2);
+      yieldArr.push(y);
+    }
+    console.log(yieldArr);
+
+    // Calculating 5 years average dividend yield 
     const dividendHistory = data.map(el => el.dividendHistory.map(x => x.dividend));
     console.log(dividendHistory);
     const dividendInFiveYears = dividendHistory.map(el => el.slice(0,5))
@@ -24,7 +33,7 @@ function App() {
 
 
 
-     const sumArr = [];
+     /* const sumArr = [];
      let sum = 0;
 
      for (let i = 0; i < dividendInFiveYears.length; i++) {
@@ -35,21 +44,17 @@ function App() {
      }
 
      console.log(sumArr);
+     */ 
 
-    
-    
-    const price = data.map(el => el.price);
+  
+
+   
     // console.log(price);
     // console.log(dividend2021);
-    const yieldArr = []; 
-    for (let i = 0; i < dividend2021.length; i++) {
-      let y = (dividend2021[i] / price[i] * 100).toFixed(2);
-      yieldArr.push(y);
-    }
-    console.log(yieldArr);
+  
     const averageDividend = [];
 
-    for (let i = 0; i < dividendInFiveYears.length; i++) {
+    /* for (let i = 0; i < dividendInFiveYears.length; i++) {
       let avg = ((sumArr[i]/5) / price[i] * 100).toFixed(2);
       averageDividend.push(avg); 
     }
