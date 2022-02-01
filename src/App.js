@@ -16,14 +16,20 @@ function App() {
     console.log(data);
      // Calculating 2021's dividend yield 
     const dividend2021 = data.map(el => el.dividendHistory[0].dividend);
-    console.log(dividend2021);
     const price = data.map(el => el.price);
     const yieldArr = []; 
     for (let i = 0; i < dividend2021.length; i++) {
       let y = (dividend2021[i] / price[i] * 100).toFixed(2);
       yieldArr.push(y);
     }
+
     console.log(yieldArr);
+  
+
+  
+    
+   
+
 
     // Calculating 5 years average dividend yield 
     const dividendHistory = data.map(el => el.dividendHistory.map(x => x.dividend));
@@ -32,6 +38,7 @@ function App() {
     console.log(dividendInFiveYears);
 
 
+    // Calculating average dividend yield
         const sumArr = [];
         let sum = 0;
 
@@ -44,12 +51,6 @@ function App() {
 
      console.log(sumArr);
     
-
-  
-
-   
-    // console.log(price);
-    // console.log(dividend2021);
   
     const averageDividend = [];
 
@@ -60,6 +61,8 @@ function App() {
 
     console.log(averageDividend);
 
+
+    // Calculating average dividend yield by weights 
     const weights = [3,2,1,1,1];
     const weightedAvgDiv = [];
 
@@ -86,14 +89,37 @@ function App() {
     console.log(weightedAvgDiv);
 
 
-
+  
   
 
-   
 
+
+
+ 
+
+   
   
   return (
     <div className="App">
+      <table>
+        <tbody>
+          {
+            data.map((data, index) => <tr key={index}>
+              <td>Share:  {data.share} <br/>
+                Company:  {data.company} <br/>
+                Price: {data.price} <br/>
+                Last year dividend: {dividend2021[index]} <br/>
+                Dividend yield: {yieldArr[index]} <br/>
+                5 years average dividend yield: {averageDividend[index]} <br/>
+                5 years weighted average dividend yield: {weightedAvgDiv[index]}
+              </td>
+              </tr>)
+
+          }
+          
+        </tbody>
+      </table>
+        
     </div>
   );
 }
