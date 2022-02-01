@@ -16,6 +16,7 @@ function App() {
     console.log(data);
      // Calculating 2021's dividend yield 
     const dividend2021 = data.map(el => el.dividendHistory[0].dividend);
+    console.log(dividend2021);
     const price = data.map(el => el.price);
     const yieldArr = []; 
     for (let i = 0; i < dividend2021.length; i++) {
@@ -31,20 +32,18 @@ function App() {
     console.log(dividendInFiveYears);
 
 
-
-
-     /* const sumArr = [];
-     let sum = 0;
+        const sumArr = [];
+        let sum = 0;
 
      for (let i = 0; i < dividendInFiveYears.length; i++) {
-       for (let k = 0; i < dividendInFiveYears[i].length; k++) {
+       for (let k = 0; k < dividendInFiveYears[i].length; k++) {
          sum += dividendInFiveYears[i][k]
-         sumArr.push(sum);
        }
+       sumArr.push(sum.toFixed(2));
      }
 
      console.log(sumArr);
-     */ 
+    
 
   
 
@@ -54,23 +53,41 @@ function App() {
   
     const averageDividend = [];
 
-    /* for (let i = 0; i < dividendInFiveYears.length; i++) {
+     for (let i = 0; i < dividendInFiveYears.length; i++) {
       let avg = ((sumArr[i]/5) / price[i] * 100).toFixed(2);
       averageDividend.push(avg); 
     }
 
     console.log(averageDividend);
 
-    /*const weights = [3,2,1,1,1];
+    const weights = [3,2,1,1,1];
     const weightedAvgDiv = [];
 
+    const weightedSumArr= [];
+    let sum1 = 0;
     for (let i = 0; i < dividendInFiveYears.length; i++) {
-      let weightedAvg = (sum/weights[i] / price[i] * 100).toFixed(2)
+      for (let k = 0; k < dividendInFiveYears[i].length; k++) {
+        sum1 += dividendInFiveYears[i][k] * weights[k]
+      }
+      weightedSumArr.push(sum1.toFixed(2));
+    }
+
+    console.log(weightedSumArr);
+
+
+    const weightsSum = weights.reduce((total, el) => total += el);
+    console.log(weightsSum);
+
+    for (let i = 0; i < weightedSumArr.length; i++) {
+      let weightedAvg = (weightedSumArr[i]/ weightsSum / price[i] * 100).toFixed(2);
       weightedAvgDiv.push(weightedAvg);
     }
 
-    console.log(weightedAvgDiv); 
-    */
+    console.log(weightedAvgDiv);
+
+
+
+  
 
    
 
