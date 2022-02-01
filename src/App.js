@@ -17,6 +17,8 @@ function App() {
      // Calculating 2021's dividend yield 
     const dividend2021 = data.map(el => el.dividendHistory[0].dividend);
     console.log(dividend2021);
+    const company = data.map(el => el.company);
+    const share = data.map(el => el.share);
     const price = data.map(el => el.price);
     const yieldArr = []; 
     for (let i = 0; i < dividend2021.length; i++) {
@@ -84,6 +86,17 @@ function App() {
     }
 
     console.log(weightedAvgDiv);
+    var text =""
+    for (let i = 0; i < dividendInFiveYears.length; i++) {
+      text+= "Share: " + share[i] +
+      " Company: " + company[i]
+       + 
+      " Price: " + price[i]+ 
+      " Last year dividend: " + dividend2021[i] 
+      + " Dividend yield-%: " + yieldArr[i]+ 
+      " 5-year average dividend yield-% " + averageDividend[i]+ 
+      " 5-year weighted average dividend yield-%: " + weightedAvgDiv[i]
+    }
 
 
 
@@ -93,9 +106,11 @@ function App() {
 
   
   return (
-    <div className="App">
-    </div>
+    <text className="App">
+      {text}
+    </text>
   );
 }
 
 export default App;
+
