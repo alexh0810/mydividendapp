@@ -24,11 +24,6 @@ function App() {
     }
 
     console.log(yieldArr);
-  
-
-  
-    
-   
 
 
     // Calculating 5 years average dividend yield 
@@ -87,16 +82,7 @@ function App() {
     }
 
     console.log(weightedAvgDiv);
-
-
-  
-  
-
-
-
-
  
-
    
   
   return (
@@ -119,9 +105,9 @@ function App() {
           
         </tbody>
       </table>
-        
     </div>
   );
 }
 
 export default App;
+
